@@ -1,0 +1,9 @@
+[submodule "Server-Windows"]
+	path = Server-Windows
+	url = https://github.com/mvenezia00/Server-Windows
+[submodule "text-generation-webui-Parte-WSL"]
+	path = text-generation-webui-Parte-WSL
+	url = https://github.com/mvenezia00/text-generation-webui-Parte-WSL
+[submodule "GPTQ-for-LLaMa"]
+	path = GPTQ-for-LLaMa
+	url = https://github.com/mvenezia00/GPTQ-for-LLaMa
