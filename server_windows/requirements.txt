@@ -1,0 +1,11 @@
+selenium
+webdriver_manager
+chat-downloader
+pyautogui
+sounddevice
+pysoundfile
+pydub
+ffmpeg
+requests
+transformers
+tensorflow
