@@ -1,0 +1,41 @@
+Thank you for downloading oobabooga/text-generation-webui (mvenezia00's fork).
+
+# Installation
+0) Install Nvidia drivers on Windows
+1) Install WSL and WSL Ubuntu
+in WSL do : 
+	
+	sudo apt update && sudo apt upgrade
+	sudo apt install build-essential
+	sudo apt install nvidia-utils-530
+	download https://github.com/mvenezia00/text-generation-webui-Parte-WSL
+	unpack, go in the new directory and do: sudo bash start_linux.sh
+	once it's done, the script will ask you which model do you want to download. We will use TheBloke/vicuna-AlekseyKorshuk-7B-GPTQ-4bit-128g
+	this will download the model you choose and will start the webui server. Go http://127.0.0.1:7860/ to use the webui.
+	If you want to start the webui again, just redo: sudo bash start_linux.sh
+
+
+# Updating
+
+Run the "update" script. This will only install the updates, so it should
+be much faster than the initial installation.
+
+May need to delete the 'text-generation-webui\repositories\GPTQ-for-LLaMa'
+folder if GPTQ-for-LLaMa needs to be updated.
+
+# Adding flags like --chat, --notebook, etc
+
+Edit the "webui.py" script using a text editor and add the desired flags
+to the line that says
+
+run_cmd("python server.py --chat --model-menu")
+
+For instance, to add the --notebook flag, change it to
+
+run_cmd("python server.py --notebook --model-menu")
+
+# Running an interactive shell
+
+In order to run an interactive shell in the miniconda environment, run
+the "cmd" script. This is useful for installing additional requirements
+manually.
