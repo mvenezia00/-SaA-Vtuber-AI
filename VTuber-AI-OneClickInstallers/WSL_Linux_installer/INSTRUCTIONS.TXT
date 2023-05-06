@@ -8,7 +8,8 @@ in WSL do :
 	sudo apt update && sudo apt upgrade
 	sudo apt install build-essential
 	sudo apt install nvidia-utils-530
-	download https://github.com/mvenezia00/text-generation-webui-Parte-WSL
+	sudo apt install gnome-terminal
+	download OneCLickInstaller from https://github.com/mvenezia00/-SaA-Vtuber-AI/releases/tag/Release
 	unpack, go in the new directory and do: sudo bash start_linux.sh
 	once it's done, the script will ask you which model do you want to download. We will use TheBloke/vicuna-AlekseyKorshuk-7B-GPTQ-4bit-128g
 	this will download the model you choose and will start the webui server. Go http://127.0.0.1:7860/ to use the webui.
