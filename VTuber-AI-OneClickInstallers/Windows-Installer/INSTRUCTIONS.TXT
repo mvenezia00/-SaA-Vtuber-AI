@@ -1,0 +1,15 @@
+Thank you for downloading oobabooga/text-generation-webui.
+
+# Installation
+
+Simply run the "start" script.
+
+# Updating
+
+Run the "update" script.
+
+# Running an interactive shell
+
+In order to run an interactive shell in the miniconda environment, run
+the "cmd" script. This is useful for installing additional requirements
+manually.
