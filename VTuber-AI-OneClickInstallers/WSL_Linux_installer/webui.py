@@ -159,6 +159,7 @@ if __name__ == "__main__":
         if len(glob.glob("text-generation-webui-Parte-WSL/models/*/")) == 0:
             download_model()
             os.chdir(script_dir)
-
+        cmd = 'gnome-terminal -- bash -c "./API_start.sh; exec bash"'
+        process = subprocess.Popen(cmd, shell=True)
         # Run the model with webui
         run_model()
