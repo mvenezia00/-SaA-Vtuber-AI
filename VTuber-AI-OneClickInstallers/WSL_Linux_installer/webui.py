@@ -136,7 +136,7 @@ def download_model():
 
 def run_model():
     os.chdir("text-generation-webui-Parte-WSL")
-    run_cmd("python server.py --chat --model-menu --quant_attn --warmup_autotune --fused_mlp --sdp-attention --xformers --rwkv-cuda --no-stream --extensions silero_tts", environment=True)  # put your flags here!
+    run_cmd("python server.py --chat --wbits 4 --groupsize 128 --model-menu --quant_attn --warmup_autotune --fused_mlp --sdp-attention --xformers --rwkv-cuda --no-stream --extensions silero_tts", environment=True)  # put your flags here!
 
 
 if __name__ == "__main__":
