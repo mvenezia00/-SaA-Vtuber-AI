@@ -5,6 +5,7 @@ import os
 import play
 from getaudiodev import getaudiodevice
 from client_API import *
+import pyautogui
 
 #05/04 simpleaudio in extensions/silero_tts/play.py. #modificato script silero per gestione nome output audio
 
@@ -20,7 +21,7 @@ from chat_downloader import ChatDownloader #da installare -- pip install chat-do
 
 from os import system
 system("title " + "Server_Principale")
- 
+
 ##Avvio modello Emozioni
 from transformers import pipeline
 classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", return_all_scores=False, device=None)
@@ -29,12 +30,24 @@ classifier = pipeline("text-classification", model="j-hartmann/emotion-english-d
 driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
 driver.get("http://localhost:7860/")
 
+input("Accertati di aver aperto VSeeFace e aver selezionato Kawaii/nPremi un tasto per continuare...")
+pyautogui.keyDown('shift')
+pyautogui.keyDown('ctrl')
+pyautogui.keyDown('f2')
+pyautogui.keyUp('shift')
+pyautogui.keyUp('ctrl')
+pyautogui.keyUp('f2')
+
 def invio_messaggio(userinput):
     #driver.find_element cerca i tasti o le caselle di testo nella pagina chrome aperta
     text_gen = driver.find_element(By.XPATH, "//button[normalize-space()='Text generation']")
     text_gen.click() #riporta su scheda chat (in caso modifico parametri e mi dimentico di tornare a scheda chat)
+    pyautogui.keyDown('shift')
+    pyautogui.keyDown('f3')
+    pyautogui.keyUp('shift')
+    pyautogui.keyUp('f3')
     generate = driver.find_element(By.ID, 'Generate')
-    textbox = driver.find_element(By.CSS_SELECTOR, "div[id='component-5'] textarea[class='scroll-hide svelte-4xt1ch']")
+    textbox = driver.find_element(By.XPATH, "//div[@id='component-5']//textarea[@class='scroll-hide svelte-1pie7s6']")
     textbox.send_keys(userinput)
     generate.click()
 
@@ -55,14 +68,16 @@ def selenium_send(userinput):
     get_audio()
     with open('risposta.txt', 'w', encoding='utf8') as f:
        f.write(clean_risposta(risposta))
+    r = clean_risposta(risposta)
     #avvia audio risposta
     filename = './messvocale.wav'
-    play.voiceandface(prediction[0], filename, device) #filename = percorso+ nome file audio
+    play.voiceandface(prediction[0], filename, device, r) #filename = percorso+ nome file audio
 
 userinput_old = ""
 with open('risposta.txt', 'w') as f:
     f.write("")
 device = getaudiodevice()
+
 while(True):
     try : 
         f = open('messaggi_youtube.json')
@@ -73,7 +88,7 @@ while(True):
         userinput = '"' + author + ': ' + message +'"'
         f.close()
     except :
-        print ("MARIO è SCEMO")
+        print (" ")
     if(userinput != userinput_old):
         print(userinput)
         selenium_send(userinput)

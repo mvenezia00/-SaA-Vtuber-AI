@@ -1,9 +1,13 @@
 from chat_downloader import ChatDownloader
 import subprocess
+import os
 
 from os import system
 system("title " + "Server_Messaggi")
-
+file1 = "risposta.txt"
+# Cancella il file "risposta.txt" se esiste
+if os.path.isfile(file1):
+    os.remove(file1)
 url = input("Inserisci link live: ")
 with open('messaggi_youtube.json', 'w') as f:
     f.write('''
@@ -30,9 +34,9 @@ with open('messaggi_youtube.json', 'w') as f:
                     "width": 64
                 }
             ],
-            "name": "Mammuu"
+            "name": ""
         },
-        "message": "Hey kawaii, introduce youself please!",
+        "message": "Hey kawaii you are live. Introduce youself to our viewers :)!",
         "message_id": "CkUKGkNQWEI5SjNNeF80Q0ZjNE4xZ0FkZHh3QWVREidDT3JldlpuTXhfNENGY2pURVFnZGNtSUZXQTE2ODI1MTM3NzE5MzE%3D",
         "message_type": "text_message",
         "timestamp": 1682513772519466
